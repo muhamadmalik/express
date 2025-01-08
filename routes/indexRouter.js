@@ -1,9 +1,21 @@
+
 const { Router } = require('express');
 
 const indexRouter = Router();
 
+const authors = ['Rose', 'Cake', 'Biff'];
+const links = [
+  { href: '/authors', text: 'Authors' },
+  { href: '/books', text: 'Books' },
+  { href: '/about', text: 'About' },
+];
+
 indexRouter.get('/', (req, res) => {
-  res.send('this is the index router were using here.');
+  res.render('index', {
+    message: 'EJS Sucks ass!',
+    links: links,
+    authors: authors,
+  });
 });
 
 module.exports = indexRouter;
