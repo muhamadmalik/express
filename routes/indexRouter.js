@@ -6,6 +6,7 @@ const links = [
   { href: '/authors', text: 'Authors' },
   { href: '/books', text: 'Books' },
   { href: '/about', text: 'About' },
+  { href: '/user', text: 'User' },
 ];
 
 indexRouter.get('/', (req, res) => {

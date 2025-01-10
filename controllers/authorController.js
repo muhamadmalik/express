@@ -1,6 +1,7 @@
 import expressAsyncHandler from 'express-async-handler';
 import authors from '../db.js';
 import CustomNotFoundError from '../errors/CustomeNotFoundError.js';
+
 const db = authors;
 const asyncHandler = expressAsyncHandler;
 const getAuthorById = asyncHandler(async (req, res) => {
