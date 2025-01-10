@@ -1,9 +1,8 @@
-// controllers/authorController.js
-
-const asyncHandler = require('express-async-handler');
-const db = require('../db');
-const CustomNotFoundError = require('../errors/CustomeNotFoundError');
-
+import expressAsyncHandler from 'express-async-handler';
+import authors from '../db.js';
+import CustomNotFoundError from '../errors/CustomeNotFoundError.js';
+const db = authors;
+const asyncHandler = expressAsyncHandler;
 const getAuthorById = asyncHandler(async (req, res) => {
   const { authorId } = req.params;
 
@@ -15,4 +14,4 @@ const getAuthorById = asyncHandler(async (req, res) => {
   res.send(`Author Name: ${author.name}`);
 });
 
-module.exports = { getAuthorById };
+export default getAuthorById;

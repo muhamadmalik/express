@@ -1,6 +1,6 @@
-const { Router } = require('express');
+import { Router } from 'express';
+import getAuthorById from '../controllers/authorController.js';
 
-const { getAuthorById } = require('../controllers/authorController');
 const authorRouter = Router();
 
 authorRouter.get('/', (req, res) => {
@@ -9,4 +9,4 @@ authorRouter.get('/', (req, res) => {
 
 authorRouter.get('/:authorId', getAuthorById);
 
-module.exports = authorRouter;
+export default authorRouter;

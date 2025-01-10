@@ -1,8 +1,7 @@
-const { Router } = require('express');
-
+import { Router } from 'express';
 const aboutRouter = Router();
 aboutRouter.get('/', (req, res) => {
-  res.render('about')
+  res.render('about');
 });
 
-module.exports = aboutRouter;
+export default aboutRouter;

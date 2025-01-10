@@ -1,5 +1,4 @@
-const { Router } = require('express');
-
+import { Router } from 'express';
 const bookRouter = Router();
 
 bookRouter.get('/', (req, res) => {
@@ -11,4 +10,4 @@ bookRouter.get('/:bookId', (req, res) => {
   console.log('bookId', bookId);
 });
 
-module.exports = bookRouter;
+export default bookRouter

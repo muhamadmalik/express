@@ -1,6 +1,4 @@
-
-const { Router } = require('express');
-
+import { Router } from 'express';
 const indexRouter = Router();
 
 const authors = ['Rose', 'Cake', 'Biff'];
@@ -18,4 +16,4 @@ indexRouter.get('/', (req, res) => {
   });
 });
 
-module.exports = indexRouter;
+export default indexRouter;

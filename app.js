@@ -1,21 +1,24 @@
-const path = require('node:path');
-const express = require('express');
+import express from 'express';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import authorRouter from './routes/authorRouter.js';
+import bookRouter from './routes/bookRouter.js';
+import indexRouter from './routes/indexRouter.js';
+import aboutRouter from './routes/aboutRouter.js';
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-const assetsPath = path.join(__dirname, 'public');
-app.use(express.static(assetsPath));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const authorRouter = require('./routes/authorRouter');
-const bookRouter = require('./routes/bookRouter');
-const indexRouter = require('./routes/indexRouter');
-const aboutRouter = require('./routes/aboutRouter');
+app.set('views', join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+const assetsPath = join(__dirname, 'public');
+app.use(express.static(assetsPath));
 
 app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 app.use('/', indexRouter);
-app.use('/about', aboutRouter)
+app.use('/about', aboutRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
