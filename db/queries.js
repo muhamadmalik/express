@@ -3,7 +3,7 @@ await client.connect();
 
 export async function getAllUsernames() {
   const { rows } = await client.query('SELECT * FROM usernames');
-  console.log(rows);
+  //   console.log(rows);
   return rows;
 }
 
@@ -11,6 +11,12 @@ export async function insertUsername(username) {
   await client.query('INSERT INTO usernames (username) VALUES ($1)', [
     username,
   ]);
+}
+export async function searchUsername(username) {
+  const { rows } = await client.query(
+    `SELECT * FROM usernames WHERE username = '${username}'`
+  );
+  return rows;
 }
 
 const obj = { getAllUsernames, insertUsername };

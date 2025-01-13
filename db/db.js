@@ -9,6 +9,11 @@ const client = new Client({
   port: 5432,
 });
 
+// await client.connect()
+
+
+// const { rows } = await client.query('SELECT * FROM usernames');
+// console.log(rows);
 
 
 

@@ -3,32 +3,20 @@ const { Pool, Client } = pg;
 const client = new Client({
   user: 'postgres',
   host: 'localhost',
-  password: 'mysecretpassword', 
+  password: 'mysecretpassword',
   port: 5432,
+  database: 'top_users',
 });
 
-async function createDatabase() {
-  try {
-    await client.connect(); 
-
-    const existsRes = await client.query(
-      "SELECT 1 FROM pg_database WHERE datname = 'mydatabase2'"
-    );
-
-    if (existsRes.rows.length === 0) {
-      await client.query('CREATE DATABASE mydatabase2');
-      console.log('Database "mydatabase" created successfully.');
-    } else {
-      console.log('Database "mydatabase" already exists.');
-    }
-  } catch (err) {
-    console.error('Error creating database:', err);
-  } finally {
-    await client.end(); 
-  }
-}
-
-createDatabase();
+await client.connect();
+// await client.query(
+//   `UPDATE usernames SET age = 23, email = 'muhamadmalik@951@gmail.com', bio = 'this is the bio of david procter', username =  'Muhamad Malik' WHERE id = 5`
+// );
+// await client.query(
+//   "INSERT INTO usernames (username, age, email, bio) VALUES ('Rehman', 24, 'rehmanbashir951@gmail.com', 'Im a software engineering student in my 7th semester.')"
+// );
+const { rows } = await client.query('SELECT * FROM usernames');
+// console.log(rows);
 
 const authors = [
   { id: 1, name: 'Bryan' },

@@ -2,7 +2,7 @@
 import UserStorage from '../UsersStorage/UserStorage.js';
 import { body, validationResult } from 'express-validator';
 import client from '../db/db.js';
-import { getAllUsernames } from '../db/queries.js';
+import { getAllUsernames, searchUsername } from '../db/queries.js';
 
 const usersStorage = UserStorage;
 
@@ -98,10 +98,14 @@ export const usersDeletePost = (req, res) => {
   res.redirect('/');
 };
 
-export const usersSearchGet = (req, res) => {
+export const usersSearchGet = async (req, res) => {
   const firstName = req.query.firstName;
-  const user = UserStorage.searchUser(firstName);
-  res.render('search', { user: { ...user } });
+
+  const user = await searchUsername(firstName);
+
+  res.render('search', {
+    users: [...user],
+  });
 };
 
 async function getUsernames(req, res) {
