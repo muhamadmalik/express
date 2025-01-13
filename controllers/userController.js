@@ -1,12 +1,16 @@
+// userController.js
 import UserStorage from '../UsersStorage/UserStorage.js';
 import { body, validationResult } from 'express-validator';
+import client from '../db/db.js';
+import { getAllUsernames } from '../db/queries.js';
 
 const usersStorage = UserStorage;
-export const usersListGet = (req, res) => {
-  console.log(usersStorage.getUsers());
+
+export const usersListGet = async (req, res) => {
+  // console.log(UserStorage.getUsers()),
   res.render('user/index', {
     title: 'User list',
-    users: usersStorage.getUsers(),
+    users: await getAllUsernames(),
   });
 };
 
@@ -99,3 +103,21 @@ export const usersSearchGet = (req, res) => {
   const user = UserStorage.searchUser(firstName);
   res.render('search', { user: { ...user } });
 };
+
+async function getUsernames(req, res) {
+  // const usernames = await db.getAllUsernames();
+  // console.log('Usernames: ', usernames);
+  // res.send('Usernames: ' + usernames.map((user) => user.username).join(', '));
+}
+
+async function createUsernameGet(req, res) {
+  // render the form
+}
+
+async function createUsernamePost(req, res) {
+  const { username } = req.body;
+  await db.insertUsername(username);
+  res.redirect('/');
+}
+
+export { getUsernames, createUsernameGet, createUsernamePost };

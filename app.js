@@ -6,6 +6,7 @@ import bookRouter from './routes/bookRouter.js';
 import indexRouter from './routes/indexRouter.js';
 import aboutRouter from './routes/aboutRouter.js';
 import userRouter from './routes/userRouter.js';
+import newRouter from './routes/newRouter.js';
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 app.use('/about', aboutRouter);
 app.use('/user', userRouter);
+app.use('/new', newRouter);
 // app.use('/search', searchRouter);
 
 app.use((err, req, res, next) => {
