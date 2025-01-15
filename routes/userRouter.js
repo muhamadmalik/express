@@ -17,7 +17,7 @@ userRouter.get('/create', usersCreateGet);
 userRouter.post('/create', usersCreatePost);
 userRouter.get('/:id/update', usersUpdateGet);
 userRouter.post('/:id/update', usersUpdatePost);
-userRouter.post('/:id/delete', usersDeletePost);
+userRouter.get('/:id/delete', usersDeletePost);
 userRouter.get('/search', usersSearchGet);
 
 export default userRouter;

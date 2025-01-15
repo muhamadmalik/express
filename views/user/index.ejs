@@ -20,8 +20,8 @@
         <li>Bio : <%= user.bio %></li>
 
         <form
-          action="/<%= user.id %>/delete"
-          method="POST"
+        action="/user/<%= user.id %>/delete"
+          method="get"
           style="display: inline"
         >
           <button

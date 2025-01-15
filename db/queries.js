@@ -18,6 +18,9 @@ export async function searchUsername(username) {
   );
   return rows;
 }
+export async function deleteUsername(id) {
+  await client.query(`DELETE FROM usernames WHERE id = ${id}`);
+}
 
 const obj = { getAllUsernames, insertUsername };
 export default obj;

@@ -9,9 +9,9 @@ const client = new Client({
 });
 
 await client.connect();
-// await client.query(
-//   `UPDATE usernames SET age = 23, email = 'muhamadmalik@951@gmail.com', bio = 'this is the bio of david procter', username =  'Muhamad Malik' WHERE id = 5`
-// );
+await client.query(
+  `UPDATE usernames SET age = 23, email = 'muhamadmalik@951@gmail.com', bio = 'this is the bio of david procter', username =  'Muhamad Malik' WHERE id = 5`
+);
 // await client.query(
 //   "INSERT INTO usernames (username, age, email, bio) VALUES ('Rehman', 24, 'rehmanbashir951@gmail.com', 'Im a software engineering student in my 7th semester.')"
 // );

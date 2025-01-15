@@ -2,7 +2,11 @@
 import UserStorage from '../UsersStorage/UserStorage.js';
 import { body, validationResult } from 'express-validator';
 import client from '../db/db.js';
-import { getAllUsernames, searchUsername } from '../db/queries.js';
+import {
+  deleteUsername,
+  getAllUsernames,
+  searchUsername,
+} from '../db/queries.js';
 
 const usersStorage = UserStorage;
 
@@ -93,9 +97,9 @@ export const usersUpdatePost = [
   },
 ];
 
-export const usersDeletePost = (req, res) => {
-  usersStorage.deleteUser(req.params.id);
-  res.redirect('/');
+export const usersDeletePost = async (req, res) => {
+  await deleteUsername(req.params.id); // await deleteUsername(parseInt(req.params.id));
+  res.redirect('/user');
 };
 
 export const usersSearchGet = async (req, res) => {
